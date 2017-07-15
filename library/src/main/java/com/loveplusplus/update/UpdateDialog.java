@@ -7,8 +7,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Html;
 
-class UpdateDialog {
+public class UpdateDialog {
 
+    public static boolean IS_UPDATING = false;
 
     static void show(final Context context, String content, final String downloadUrl) {
         if (isContextValid(context)) {
@@ -18,6 +19,7 @@ class UpdateDialog {
                     .setPositiveButton(R.string.android_auto_update_dialog_btn_download, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             goToDownload(context, downloadUrl);
+                            IS_UPDATING = true;
                         }
                     })
                     .setNegativeButton(R.string.android_auto_update_dialog_btn_cancel, new DialogInterface.OnClickListener() {
